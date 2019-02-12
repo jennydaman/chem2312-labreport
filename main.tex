@@ -1,15 +1,20 @@
+%\documentclass[11pt,letterpaper]{article}
 \documentclass[letterpaper,amsmath,amssymb,prb,preprint,12pt]{revtex4-1}% Physical Review B
-
+\usepackage{dcolumn}% Align table columns on decimal point
 %\usepackage{graphicx,subfigure} %Include figure files
 %\usepackage{bm} %bold math
 %\usepackage{epstopdf} %handle .eps figures
 %\usepackage{mciteplus} %magic
 %\usepackage{gensymb} %Generic symbols for both text and math mode
-%\usepackage{chemmacros}
+\usepackage[version=4]{mhchem}
+% note: don't use \usepackage{chemmacros}. its arrow is prettier, but it does not play well with revtex.
+% revtex sets all the defaults to 0 so you'll need
+%\setchemformula{bond-length=.5833em,plus-space=.6em,stoich-space=.1383em,adduct-space=.1333em,charge-hshift=.25em}
 
-%\usepackage[12pt]{extsizes} to customize font size
 %\usepackage[margin=1in]{geometry} %one inch margins
 %\linespread{2} %double space
+\setlength{\parskip}{8pt} %spacing after paragraph
+
 
 \begin{document}
 \setcounter{page}{0}
@@ -31,6 +36,7 @@
 Jennings Zhang
 \vspace{1.5cm}
 
+CHEM 2312\\
 TA: Jiansong Cai\\
 Experiment Date: January 28, 2019\\
 Report Date: February 4, 2019
@@ -47,9 +53,11 @@ Report Date: February 4, 2019
 
 This template took two hours to make... Well, it's done now. And it looks pretty good. Rev\TeX is really annoying in how it throws a warning for no reason. It be like that sometimes, it really do. This first page has a few example stuff that might be useful to copy and paste.
 
-\subsection{Example Stuff from NGRD}
+\subsection{Example Stuff}
 
-Below is a formula.
+\subsubsection{From NGRD}
+
+Below is a mathy formula.
 
 \[\Delta\rho(r)=\rho(r)_{I}-\rho(r)_{M}-\rho(r)_{S}\]
 
@@ -57,7 +65,7 @@ And here is Table \ref{paw}.
 
 \begin{table}[h]
 \caption{Atomic and Electronic Parameters Used to Generate PAW Potentials}
-\begin{tabular}{l@{\hskip 1cm}c@{\hskip 1cm}c}
+\begin{tabular}{l@{\qquad}c@{\qquad}c}
 \hline
 Element&Electron Configuration&Radius Cut-off (a.u.)\\
 \hline
@@ -70,6 +78,77 @@ P & [He]2s$^{2}$2p$^{6}$3s$^{2}$3p$^{3}$ & 1.51 \\
 \hline
 \end{tabular}
 \label{paw}
+\end{table}
+
+\subsubsection{More Examples}
+
+A chemical reaction from the caffeine lab below.
+
+\ce{C6H5-OH + 2Na+ + CO3^2- -> C6H5ONa + NaHCO3}
+
+The equation that follows is set in a wide format, i.e., it spans the full page. 
+The wide format is reserved for long equations
+that cannot easily be set in a single column:
+\begin{widetext}
+\begin{equation}
+{\cal R}^{(\text{d})}=
+ g_{\sigma_2}^e
+ \left(
+   \frac{[\Gamma^Z(3,21)]_{\sigma_1}}{Q_{12}^2-M_W^2}
+  +\frac{[\Gamma^Z(13,2)]_{\sigma_1}}{Q_{13}^2-M_W^2}
+ \right)
+ + x_WQ_e
+ \left(
+   \frac{[\Gamma^\gamma(3,21)]_{\sigma_1}}{Q_{12}^2-M_W^2}
+  +\frac{[\Gamma^\gamma(13,2)]_{\sigma_1}}{Q_{13}^2-M_W^2}
+ \right)\;. 
+ \label{eq:wideeq}
+\end{equation}
+\end{widetext}
+This is typed to show how the output appears in wide format.
+(Incidentally, since there is no blank line between the \texttt{equation} environment above 
+and the start of this paragraph, this paragraph is not indented.)
+
+Table \ref{tab:table1} style is recommended by apssamp.tex, but I prefer table \ref{tab:table2}.
+
+\begin{table}[t]%The best place to locate the table environment is directly after its first reference in text
+\caption{\label{tab:table1}%
+A table that fits into a single column of a two-column layout. 
+Note that REV\TeX~4 adjusts the intercolumn spacing so that the table fills the
+entire width of the column. Table captions are numbered
+automatically. 
+This table illustrates left-, center-, decimal- and right-aligned columns,
+along with the use of the \texttt{ruledtabular} environment which sets the 
+Scotch (double) rules above and below the alignment, per APS style.
+}
+\begin{ruledtabular}
+\begin{tabular}{lcdr}
+\textrm{Left\footnote{Note a.}}&
+\textrm{Centered\footnote{Note b.}}&
+\multicolumn{1}{c}{\textrm{Decimal}}&
+\textrm{Right}\\
+\colrule
+1 & 2 & 3.001 & 4\\
+10 & 20 & 30 & 40\\
+100 & 200 & 300.0 & 400\\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{table}[h]%The best place to locate the table environment is directly after its first reference in text
+\caption{\label{tab:table2}%
+A table that fits into a single column
+}
+\begin{tabular}{ l @{\qquad} c }
+\toprule
+\textrm{Material}&
+\textrm{Bond Length}\\
+\colrule
+2D Aluminum & \(\thicksim\)2.54 \text{\AA}\\
+Cycloaluminum helides & 2.643 \text{\AA}, 2.587 \text{\AA}\\
+Aluminum tetramers & 2.773 \text{\AA}, 2.767 \text{\AA}\\
+\botrule
+\end{tabular}
 \end{table}
 
 % See fig \ref{sm}.
